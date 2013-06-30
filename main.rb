@@ -29,7 +29,7 @@ post '/create' do
 end
 
 post '/videos/:id' do
-  q = "UPDATE videos SET name='#{params['name']}', description='#{params['description']}', photo='#{params['url']}', genre='#{params['genre']}'
+  q = "UPDATE videos SET name='#{params['name']}', description='#{params['description']}', url='#{params['url']}', genre='#{params['genre']}'
   WHERE id=#{params[:id]}"
   run_sql(q)
   redirect to('/videos')
@@ -64,6 +64,7 @@ get '/videos/:genre' do
   erb :videos
 end
 
+
 def run_sql(query)
   conn = PG.connect(:dbname => 'allvideos', :host => 'localhost')
   result = conn.exec(query)
@@ -71,6 +72,7 @@ def run_sql(query)
 
   result
 end
+
 
 =begin
 def run_sql(query)
