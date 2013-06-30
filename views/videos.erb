@@ -1,0 +1,13 @@
+<% @videos.each do |vid| %>
+<section>
+  <%= vid['name'] %>
+  <%= vid['genre'] %>
+  <a href="<%= vid['photo'] %>">Watch</a>
+  <iframe test="wtf" width="360" height="215" src="//www.youtube.com/embed/<%= vid['url'] %>"></iframe>
+  <a href="/videos/<%= vid['id'] %>/edit">Edit</a>
+  <form method='post' action='/videos/<%= vid['id'] %>/delete'>
+    <button>delete</button>
+  </form>
+</section>
+<% end %>
+

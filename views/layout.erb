@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>Videos! VHS is dead, long live the cassette!!!</title>
+  <link rel='stylesheet' href='/style.css'>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href='/'>Home</a><li>
+      <li><a href='/new'>Add a new Video</a></li>
+        <% @genres.each do |genre| %>
+        <li><a href='/videos/<%= genre['genre'] %>'>Genre <%= genre['genre'] %></a></li>
+        <% end %>
+      </ul>
+    </nav>
+
+    <%= yield %>
+  </body>
+</html>
+
+

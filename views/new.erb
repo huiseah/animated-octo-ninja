@@ -1,0 +1,7 @@
+<form method='post' action='<%= @video.nil? ? '/create' : "/videos/#{@video['id']}" %>'>
+  <input name='name' placeholder='Name' autofocus value="<%= @video['name'] if @video %>">
+  <input name='description' placeholder='Describe Video' value="<%= @video['description'] if @video %>">
+  <input name='url' placeholder='Unique YouTube Signature' value="<%= @video['url'] if @video %>">
+  <input name='genre' placeholder='Genre' value="<%= @video['genre'] if @video %>">
+  <button>Video everything!</button>
+</form>
