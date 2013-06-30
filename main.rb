@@ -3,7 +3,7 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'active_support/all'
 require 'pg'
-require 'sqlite3'
+#require 'sqlite3'
 
 before do
   q = "SELECT DISTINCT genre FROM videos"
@@ -64,14 +64,15 @@ get '/videos/:genre' do
   erb :videos
 end
 
-=begin
-def run_sql(q)
-  db = SQLite3::Database.new "allvideos.db"
-  rows = db.execute(q)
+def run_sql(query)
+  conn = PG.connect(:dbname => 'allvideos', :host => 'localhost')
+  result = conn.exec(query)
+  conn.close
 
+  result
 end
-=end
 
+=begin
 def run_sql(query)
   conn = PG.connect(:dbname => 'allvideos', :host => 'localhost', :user => 'hui', :password => 'password' )
   result = conn.exec(query)
@@ -79,9 +80,7 @@ def run_sql(query)
 
   result
 end
-
-
-
+=end
 
 =begin
 def run_sql(sql)
